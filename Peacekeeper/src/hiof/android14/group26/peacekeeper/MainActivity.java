@@ -6,10 +6,16 @@ import android.app.ActionBar.Tab;
 import android.app.FragmentManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import android.widget.PopupWindow;
 
 public class MainActivity extends FragmentActivity {	
 	@Override
@@ -52,6 +58,34 @@ public class MainActivity extends FragmentActivity {
 //		fragmentTransaction.commit();
 		
 	}
+	
+	public void addNewTask(View arg0){
+		LayoutInflater layoutInflater 
+	     = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
+	    
+		View popupView = layoutInflater.inflate(R.layout.popup_add_user, null);  
+		
+	    final PopupWindow popupWindow = new PopupWindow(
+				popupView, 
+				LayoutParams.WRAP_CONTENT,  
+				LayoutParams.WRAP_CONTENT
+		);  
+	             
+         Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
+         btnDismiss.setOnClickListener(new Button.OnClickListener(){
+		     @Override
+		     public void onClick(View v) {
+		    	 popupWindow.dismiss();
+		     }
+		 });
+	               
+	     popupWindow.showAsDropDown(
+	    		 popupView, 
+	    		 100, 
+	    		 200
+		 );
+	}
+	
 	
 //	public void onClickBtnShowAllTasks(View view){
 //		FragmentManager fragmentManager = getFragmentManager();
@@ -102,17 +136,19 @@ public class MainActivity extends FragmentActivity {
 		return true;
 	}
 	
-//	@Override
-//	public boolean onOptionsItemSelected(MenuItem item) {
-//	    // Handle presses on the action bar items
-//	    switch (item.getItemId()) {
-//	        case R.id.action_search:
-//	            
-//	            return true;
-//	        default:
-//	            return super.onOptionsItemSelected(item);
-//	    }
-//	}
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.add:
+	        	addNewTask(this.findViewById(R.id.add));
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+
 	
 	
 	
