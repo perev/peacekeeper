@@ -1,12 +1,8 @@
 package hiof.android14.group26.peacekeeper;
 
-
-import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -22,16 +18,17 @@ public class AllTasksFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceBundle){
 		super.onCreate(savedInstanceBundle);
 		
-		String[] values = new String[] {"Task 1", "Task2", "Task 3", "Task 4"};
+		//TODO: get data from database and fill list here
+		String[] values = new String[] {"Open Task 1", "Chosen Task 2", "Closed Task 3", "Closed Task 4"};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-		        android.R.layout.simple_list_item_1, values);
+		        R.layout.fragment_all_tasks,R.id.label, values);
 		
 		setListAdapter(adapter);
 	}
 	
 	@Override
 	  public void onListItemClick(ListView l, View v, int position, long id) {
-	    // do something with the data
+	    //TODO: do something with the data
 	  }
 }
