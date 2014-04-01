@@ -162,7 +162,7 @@ public class MainActivity extends SherlockActivity {
 //			fragmentTransaction.remove(oldFragment);
 //		
 //		fragmentTransaction.add(R.id.taskGroup, closedTasksFragment, _dynamicFragments);
-//		fragmentTransaction.addToBackStack("Add");
+//		fragmentTransaction.addToBackStack("Add");s
 //		fragmentTransaction.commit();
 //	}
 	
