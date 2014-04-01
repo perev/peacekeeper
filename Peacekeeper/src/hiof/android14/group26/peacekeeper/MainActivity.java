@@ -2,6 +2,8 @@ package hiof.android14.group26.peacekeeper;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -9,19 +11,20 @@ import android.app.FragmentManager;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.FragmentActivity;
 import android.text.format.Time;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
+import com.actionbarsherlock.view.MenuItem;
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends SherlockActivity {
 	
 	private static ArrayList<Tasks> _tasksArray = new ArrayList<Tasks>();
 	
@@ -165,9 +168,9 @@ public class MainActivity extends FragmentActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	   com.actionbarsherlock.view.MenuInflater inflater = getSupportMenuInflater();
+	   inflater.inflate(R.menu.main, (com.actionbarsherlock.view.Menu) menu);
+	   return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
@@ -186,9 +189,6 @@ public class MainActivity extends FragmentActivity {
 		return _tasksArray;
 	}
 
-	public void set_tasksArray(ArrayList<Tasks> _tasksArray) {
-		this._tasksArray = _tasksArray;
-	}
 	
 	
 	
