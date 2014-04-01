@@ -2,21 +2,21 @@ package hiof.android14.group26.peacekeeper;
 
 import java.sql.Date;
 
+import android.text.format.Time;
+
 public class Tasks {
 	private int taskId, taskCreatorId, taskResponsibleId;
-	private String taskName, taskDescription, responsibleUserName;
-	private Date creationDate, dueDate;
-	private double taskPrice;
+	private String taskDescription, responsibleUserName;
+	private Time creationDate, dueDate;
+	private String taskPrice;
 	
-	public Tasks(int taskId, int taskCreatorId, int taskResponsibleId,
-			String taskName, String taskDescription,
-			String responsibleUserName, Date creationDate, Date dueDate,
-			double taskPrice) {
+	public Tasks(int taskId, int taskCreatorId, int taskResponsibleId, String taskDescription,
+			String responsibleUserName, Time creationDate, Time dueDate,
+			String taskPrice) {
 
 		this.taskId = taskId;
 		this.taskCreatorId = taskCreatorId;
 		this.taskResponsibleId = taskResponsibleId;
-		this.taskName = taskName;
 		this.taskDescription = taskDescription;
 		this.responsibleUserName = responsibleUserName;
 		this.creationDate = creationDate;
@@ -48,13 +48,7 @@ public class Tasks {
 		this.taskResponsibleId = taskResponsibleId;
 	}
 
-	public String getTaskName() {
-		return taskName;
-	}
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
 
 	public String getTaskDescription() {
 		return taskDescription;
@@ -72,27 +66,27 @@ public class Tasks {
 		this.responsibleUserName = responsibleUserName;
 	}
 
-	public Date getCreationDate() {
+	public Time getCreationDate() {
 		return creationDate;
 	}
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(Time creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	public Date getDueDate() {
+	public Time getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(Time dueDate) {
 		this.dueDate = dueDate;
 	}
 
-	public double getTaskPrice() {
+	public String getTaskPrice() {
 		return taskPrice;
 	}
 
-	public void setTaskPrice(double taskPrice) {
+	public void setTaskPrice(String taskPrice) {
 		this.taskPrice = taskPrice;
 	}
 	

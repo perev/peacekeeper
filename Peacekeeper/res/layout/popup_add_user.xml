@@ -2,49 +2,50 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="@android:color/background_light">
- <LinearLayout 
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:orientation="vertical" 
-     android:layout_margin="1dp"
-     android:background="@android:color/white">
-     >
-     <LinearLayout 
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:orientation="vertical" 
-      android:layout_margin="20dp">
-      <EditText
-          android:id="@+id/taskName"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:inputType="text"
-          android:text="Task Name" />
-      <EditText
-          android:id="@+id/taskDescription"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:inputType="text"
-          android:text="Task Description" />
-      <EditText
-          android:id="@+id/taskDescription"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:inputType="text"
-          android:text="Task Price" />
-      <EditText
-          android:id="@+id/taskDescription"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:inputType="text"
-          android:text="Insert Date Picker Here" />
-      <Button
-          android:id="@+id/dismiss"
-          android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-          android:text="Dismiss" />
-      </LinearLayout>
- </LinearLayout>
+    android:background="@android:color/background_light"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="176dp"
+        android:layout_height="0dp"
+        android:layout_margin="1dp"
+        android:layout_weight="0.23"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/taskDescription"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:inputType="textMultiLine"
+                android:text="@string/new_task_desc"
+                android:textSize="12sp" >
+
+                <requestFocus />
+            </EditText>
+
+            <EditText
+                android:id="@+id/taskPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberSigned"
+                android:text="@string/new_task_price"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/taskAdd"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:text="@string/new_task_add"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/dismiss"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:text="@string/new_task_cancel"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
 </LinearLayout>

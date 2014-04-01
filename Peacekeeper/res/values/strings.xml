@@ -8,5 +8,10 @@
     <string name="btn_open_tasks">Open Tasks</string>
     <string name="btn_closed_tasks">Closed Tasks</string>
     <string name="menu_title">Menu</string>
+    <string name="new_task_name">Task Name</string>
+    <string name="new_task_desc">Task Description</string>
+    <string name="new_task_cancel">Cancel</string>
+    <string name="new_task_price">Price</string>
+    <string name="new_task_add">Add</string>
 
 </resources>

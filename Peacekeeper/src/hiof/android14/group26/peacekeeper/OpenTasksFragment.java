@@ -1,6 +1,8 @@
 package hiof.android14.group26.peacekeeper;
 
 
+import java.util.ArrayList;
+
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -19,14 +21,22 @@ import android.widget.ListView;
 //}
 
 public class OpenTasksFragment extends ListFragment {
+	
+	private ArrayList<String> _openTaskList = new ArrayList<String>();
+	
 	public void onCreate(Bundle savedInstanceBundle){
 		super.onCreate(savedInstanceBundle);
 		
+		
 		//TODO: get data from database and fill list here
-		String[] values = new String[] {"Open Task 1", "Open Task 2", "Open Task 3", "Open Task 4"};
+		for	(Tasks task : MainActivity.get_tasksArray()){
+			_openTaskList.add(task.getTaskDescription());
+		}
+		
+		//String[] values = new String[] {"Open Task 1", "Open Task 2", "Open Task 3", "Open Task 4"};
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-		        android.R.layout.simple_list_item_1, values);
+		        android.R.layout.simple_list_item_1, _openTaskList);
 		
 		setListAdapter(adapter);
 	}

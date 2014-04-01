@@ -1,5 +1,7 @@
 package hiof.android14.group26.peacekeeper;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
@@ -8,6 +10,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v4.app.FragmentActivity;
+import android.text.format.Time;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,9 +18,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 
-public class MainActivity extends FragmentActivity {	
+public class MainActivity extends FragmentActivity {
+	
+	private static ArrayList<Tasks> _tasksArray = new ArrayList<Tasks>();
+	
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -48,18 +57,14 @@ public class MainActivity extends FragmentActivity {
 		
 		actionBar.addTab(tab);
 		
-		//Show all tasks in fragment at startup
-//		FragmentManager fragmentManager = getFragmentManager();
-//		AllTasksFragment allTaskFragment = new AllTasksFragment();
-//		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//		
-//		fragmentTransaction.add(R.id.taskGroup, allTaskFragment, _dynamicFragments);
-//		fragmentTransaction.addToBackStack("Add");
-//		fragmentTransaction.commit();
-		
 	}
 	
 	public void addNewTask(View arg0){
+		
+		final EditText taskDesc;
+		final EditText price;
+		final Time now = new Time();
+		
 		LayoutInflater layoutInflater 
 	     = (LayoutInflater)getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);  
 	    
@@ -67,9 +72,16 @@ public class MainActivity extends FragmentActivity {
 		
 	    final PopupWindow popupWindow = new PopupWindow(
 				popupView, 
-				LayoutParams.WRAP_CONTENT,  
+				LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT
+				
 		);  
+	    
+	    popupWindow.setFocusable(true);
+	    popupWindow.setTouchable(true);
+	    
+	    taskDesc = (EditText) findViewById(R.id.taskDescription);
+	    price = (EditText) findViewById(R.id.taskPrice);
 	             
          Button btnDismiss = (Button)popupView.findViewById(R.id.dismiss);
          btnDismiss.setOnClickListener(new Button.OnClickListener(){
@@ -78,10 +90,32 @@ public class MainActivity extends FragmentActivity {
 		    	 popupWindow.dismiss();
 		     }
 		 });
+         
+         
+         //TODO: generalize this code for users etc
+         Button btnAdd = (Button)popupView.findViewById(R.id.taskAdd);
+         btnAdd.setOnClickListener(new Button.OnClickListener(){
+        	@Override
+        	public void onClick (View v) {
+        		
+        		now.setToNow();
+        		
+        		Tasks task = new Tasks(0, 1, 0, 
+        				 taskDesc.getText().toString(), 	//description
+        				 "Per Edvard", 								//username
+        				 now, 										//creation date
+        				 null, 										//due date, empty for now
+        				 "test"//price.getText().toString()			//price
+        		);
+        		
+        		
+        		_tasksArray.add(task);
+        	}
+         });
 	               
 	     popupWindow.showAsDropDown(
 	    		 popupView, 
-	    		 100, 
+	    		 200, 
 	    		 200
 		 );
 	}
@@ -148,7 +182,13 @@ public class MainActivity extends FragmentActivity {
 	    }
 	}
 	
+	public static ArrayList<Tasks> get_tasksArray() {
+		return _tasksArray;
+	}
 
+	public void set_tasksArray(ArrayList<Tasks> _tasksArray) {
+		this._tasksArray = _tasksArray;
+	}
 	
 	
 	
