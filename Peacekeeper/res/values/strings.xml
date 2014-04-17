@@ -13,5 +13,6 @@
     <string name="new_task_cancel">Cancel</string>
     <string name="new_task_price">Price</string>
     <string name="new_task_add">Add</string>
+    <string name="cancel">Cancel</string>
 
 </resources>
